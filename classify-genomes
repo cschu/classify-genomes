@@ -170,11 +170,11 @@ def main(argv=None):
     else:
         dummy_file = tempfile.NamedTemporaryFile(mode="w")
         find_genes_cmd = subprocess.Popen(find_genesCMD,stdout=dummy_file, stderr=dummy_file)
-    #return_code = find_genes_cmd.wait()
-    stdout, stderr = find_genes_cmd.communicate()
-    print(stdout)
-    print(stderr)
-    return_code = 1
+    return_code = find_genes_cmd.wait()
+    #stdout, stderr = find_genes_cmd.communicate()
+    #print(stdout)
+    #print(stderr)
+    #return_code = 1
     if return_code:
         sys.stderr.write("[E::main] Error: extracting genes failed.\n")
         sys.exit(1)

@@ -118,10 +118,10 @@ def parseFetchMGs(outMGfolder, OGType):
 	return(setMGs)
 
 def MakeContigLengthFile(contigsFasta, contigLengthsFileName):
-#	cmd = 'seqtk comp ' + contigsFasta + ' | cut -f1,2 > ' + contigLengthsFileName
-#	os.system(cmd)
+	#	cmd = 'seqtk comp ' + contigsFasta + ' | cut -f1,2 > ' + contigLengthsFileName
+	#	os.system(cmd)
 
-# recoded above in pure python
+	# recoded above in pure python
 	contigLengthsFile = open(contigLengthsFileName,"w")
 	seqtk_comp = subprocess.Popen(['seqtk', 'comp', contigsFasta], stdout=subprocess.PIPE)
 
@@ -377,7 +377,7 @@ def runMakePaddedMG_DB(contigsFasta, outfolder, runPrefix, gffFileName, contigCo
 		runFetchMGs(proteinFasta, genesFasta, numThreads, outMGfolder)
 		#setMGs = parseFetchMGs(outMGfolder, OGType)
 		#print("...done")
-        sys.exit(0) # AFTER RUNNING FETCH_MG WE EXIT -------------- MODIFIED FOR PROGENOMES
+		sys.exit(0) # AFTER RUNNING FETCH_MG WE EXIT -------------- MODIFIED FOR PROGENOMES
 
 	if(geneNamesFileName == "all"):
 		setMGs.add("all")
