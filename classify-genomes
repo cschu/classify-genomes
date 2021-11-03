@@ -172,6 +172,7 @@ def main(argv=None):
         find_genes_cmd = subprocess.Popen(find_genesCMD,stdout=dummy_file, stderr=dummy_file)
     return_code = find_genes_cmd.wait()
     if return_code:
+		print(find_genes_cmd)
         sys.stderr.write("[E::main] Error: extracting genes failed.\n")
         sys.exit(1)
 
