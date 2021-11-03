@@ -166,13 +166,17 @@ def main(argv=None):
 
     find_genesCMD = shlex.split(find_genes)
     if args.verbose > 3:
-        find_genes_cmd = subprocess.Popen(find_genesCMD)
+        find_genes_cmd = subprocess.Popen(find_genesCMD, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     else:
         dummy_file = tempfile.NamedTemporaryFile(mode="w")
         find_genes_cmd = subprocess.Popen(find_genesCMD,stdout=dummy_file, stderr=dummy_file)
-    return_code = find_genes_cmd.wait()
+    #return_code = find_genes_cmd.wait()
+    stdout, stderr = subprocess.communicate()
+    print(stdout)
+    print(stderr)
+    return_code = 1
     if return_code:
-        print(find_genes_cmd)
+        print(find_genes_cmd.communica)
         sys.stderr.write("[E::main] Error: extracting genes failed.\n")
         sys.exit(1)
 
