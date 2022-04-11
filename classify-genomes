@@ -186,7 +186,11 @@ def main(argv=None):
         sys.stderr.write("temp file with genes: "+genes_temp_file.name+"\n")
 
     for i in marker_genes:
-        file_g = open(genes+"/tmp1/tmp2_markerGenes/"+i+".fna","r")
+        try:
+            file_g = open(genes+"/tmp1/tmp2_markerGenes/"+i+".fna","r")
+        except FileNotFoundError:
+            print(f"Couldn't find sequences for marker gene {i}.")
+            continue
         cont = 1
         for k in file_g:
             if k.startswith(">"):
